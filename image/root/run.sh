@@ -9,5 +9,6 @@ dnf update --assumeyes &&
     dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo &&
     dnf update --assumeyes &&
     dnf install --assumeyes dnf docker-common docker-latest &&
+    usermod -a -G docker user &&
     dnf update --assumeyes &&
     dnf clean all
