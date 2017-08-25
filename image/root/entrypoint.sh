@@ -1,7 +1,7 @@
 #!/bin/sh
 
 export NETWORK=$(sudo docker network create $(uuidgen)) &&
-    docker \
+    sudo docker \
         container \
         run \
         --detach \
@@ -9,7 +9,7 @@ export NETWORK=$(sudo docker network create $(uuidgen)) &&
         --cidfile ~/sshd.cid \
         --network ${NETWORK} \
         endlessplanet/sshd:0.0.5 &&
-    docker network connect --alias sshd ${NETWORK} $(cat ~/.sshd.cid) &&
+    sudo docker network connect --alias sshd ${NETWORK} $(cat ~/.sshd.cid) &&
     export SSHD=$(cat ~/.sshd.cid) &&
     bash
 #     docker \
